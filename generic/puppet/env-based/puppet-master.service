@@ -1,0 +1,12 @@
+[Unit]
+Description=Puppet master
+
+[Service]
+Type=forking
+PIDFile=/run/puppet/master.pid
+Environment="SECRET=apikey123" # this is what should not be pushed to git. here for examplary purposes on how to set up secret via ENV in .service files
+ExecStart=/usr/bin/puppet master
+
+[Install]
+WantedBy=multi-user.target
+Alias=puppetmaster.service

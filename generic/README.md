@@ -1,0 +1,1 @@
+# Solutions that are not specific to secure storage solutions/use built in functions of commonly used tools

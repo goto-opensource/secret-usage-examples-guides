@@ -1,0 +1,13 @@
+---
+
+version: 5
+
+:hierarchy:
+  - name: "AWS Parameter Store"
+    lookup_key: ssm_paramstore
+    uris:
+      - /
+    options:
+      region: us-east-2
+      get_all: false
+      recursive: false

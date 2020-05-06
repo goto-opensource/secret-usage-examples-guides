@@ -1,0 +1,11 @@
+{
+  "name": "credstash-Sample-App",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "nodecredstash": "2.0.2"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}

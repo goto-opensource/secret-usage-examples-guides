@@ -1,0 +1,1 @@
+# Simple, independent, 100% puppet based solutions.

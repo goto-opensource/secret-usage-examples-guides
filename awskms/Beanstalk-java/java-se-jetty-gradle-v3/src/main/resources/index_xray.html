@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Elastic Beanstalk</title>
+    <style type="text/css">
+      body {
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        font-size:14px;
+        -moz-transition-property: text-shadow;
+        -moz-transition-duration: 4s;
+        -webkit-transition-property: text-shadow;
+        -webkit-transition-duration: 4s;
+        text-shadow: none;
+      }
+      body.blurry {
+        -moz-transition-property: text-shadow;
+        -moz-transition-duration: 4s;
+        -webkit-transition-property: text-shadow;
+        -webkit-transition-duration: 4s;
+        text-shadow: #fff 0px 0px 25px;
+      }
+      p {
+        color: #FF9933
+      }
+      a {
+        color: #F0FFFF;
+      }
+      .textColumn, .linksColumn {
+        padding: 2em;
+      }
+      .textColumn {
+        position: absolute;
+        top: 0px;
+        right: 50%;
+        bottom: 0px;
+        left: 0px;
+
+        text-align: right;
+        padding-top: 11em;
+        background-color: #F0FFFF;
+      }
+      .textColumn p {
+        width: 75%;
+        float:right;
+      }
+      .linksColumn {
+        position: absolute;
+        top:0px;
+        right: 0px;
+        bottom: 0px;
+        left: 50%;
+
+        background-color: #5C85D6;
+      }
+
+      h1 {
+        color: #3A599A;
+        font-size: 500%;
+        font-weight: normal;
+        margin-bottom: 0em;
+      }
+      h2 {
+        font-size: 200%;
+        font-weight: normal;
+        margin-bottom: 0em;
+      }
+      ul {
+        padding-left: 1em;
+        margin: 0px;
+      }
+      li {
+        margin: 1em 0em;
+      }
+      #generateTrace {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        border-radius: 6px;
+        background-color: white;
+        color: #333;
+        border-color: white;
+        text-decoration: none;
+      }
+      #generateTrace:hover {
+        color: white;
+        background-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="textColumn">
+      <h1>Congratulations</h1>
+      <p>Your first AWS Elastic Beanstalk Java application is now running on your own dedicated environment in the AWS Cloud</p>
+    </div>
+    <div class="linksColumn">
+      <h2>What's Next?</h2>
+      <ul>
+        <li><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html">AWS Elastic Beanstalk overview</a></li>
+        <li><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.html">AWS Elastic Beanstalk concepts</a></li>
+        <li><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-se-platform.html">Using the AWS Elastic Beanstalk Java SE Platform</a></li>
+        <li><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.loggingS3.title.html">Working with Logs</a></li>
+      </ul>
+      <h2>AWS X-Ray</h2>
+      <p style="color:white">AWS X-Ray helps developers analyze and debug distributed applications. With X-Ray, you can understand how your application and its underlying services are performing to identify and troubleshoot the root cause of performance issues and errors.</p>
+      <p style="color:white"><a href="https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html">Learn More</a></p>
+      <p style="color:white">Choose <strong>Generate sample traffic</strong> to create data that you can view in the X-Ray console.</p>
+      <a id="generateTrace" href="#" onclick="doTrace();">Generate Sample Traffic</a>
+      <br /><br />
+      <a href="https://console.aws.amazon.com/xray/home" target="_blank">Open the AWS X-Ray Console</a>
+    </div>
+  <script type="text/javascript">
+    function doTrace() {
+      document.getElementById("generateTrace").textContent = "Generating Traffic...";
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4) {
+          if (xmlHttp.status == 200) {
+            document.getElementById("generateTrace").textContent = "Done! Click to generate more data";
+          } else {
+            // Non 200 ready status
+            document.getElementById("generateTrace").textContent = "Issue communicating with backend. Click to try again.";
+          }
+        }
+      }
+      xmlHttp.open("GET", "/trace", true);
+      xmlHttp.send(null);
+    }
+  </script>
+  </body>
+</html>
